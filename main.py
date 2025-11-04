@@ -1,6 +1,7 @@
 import pygame
-from constants import *
+from constants import SCREEN_HEIGHT, SCREEN_WIDTH
 
+pygame.init()
 
 def main():
     print("Starting Asteroids!")
