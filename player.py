@@ -33,7 +33,11 @@ class Player(CircleShape):
         b = self.position - forward * self.radius - right
         c = self.position - forward * self.radius + right
         return [a, b, c]
-
+    
+    def shoot():
+        #create shot at pos of player
+        # set shot velo start with pygame.Vector2(0,1) .rotate() the vector in the position the player is facing, scale it up (multiply by PLAYER_SHOOT_SPEED)
+        # inside player class handle spacebar (pygame.K_SPACE) and call the shoot method when its pressed
 
 
 
