@@ -1,7 +1,7 @@
 from circleshape import CircleShape
-from constants import PLAYER_RADIUS, PLAYER_TURN_SPEED, PLAYER_SPEED
+from constants import PLAYER_RADIUS, PLAYER_TURN_SPEED, PLAYER_SPEED, SHOT_RADIUS, PLAYER_SHOOT_SPEED
 import pygame
-
+from shot import Shot
 class Player(CircleShape):
     def __init__(self, x, y):
         super().__init__(x, y, PLAYER_RADIUS)
@@ -21,6 +21,9 @@ class Player(CircleShape):
 
         if keys[pygame.K_s]:
             self.move(-dt)
+        if keys[pygame.K_SPACE]:
+            self.shoot()
+
     def move(self, dt):
         forward = pygame.Vector2(0, 1).rotate(self.rotation)
         self.position += forward * PLAYER_SPEED * dt
@@ -34,11 +37,13 @@ class Player(CircleShape):
         c = self.position - forward * self.radius + right
         return [a, b, c]
     
-    def shoot():
+    def shoot(self):
+        print('shot fired!')
         #create shot at pos of player
-        # set shot velo start with pygame.Vector2(0,1) .rotate() the vector in the position the player is facing, scale it up (multiply by PLAYER_SHOOT_SPEED)
+        bullet = Shot(self.position.x, self.position.y, SHOT_RADIUS)
+        # set shots velo, start with pygame.Vector2(0,1) .rotate() the vector in the position the player is facing, scale it up (multiply by PLAYER_SHOOT_SPEED)
+        bullet.velocity = pygame.Vector2(0,1).rotate(self.rotation) * PLAYER_SHOOT_SPEED
         # inside player class handle spacebar (pygame.K_SPACE) and call the shoot method when its pressed
-
 
 
 
